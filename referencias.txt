@@ -1,0 +1,152 @@
+vizhub.com
+https://youtu.be/xkBheRZTkaw
+
+Alguem sabe fazer um algoritmo que transforma uma estrutura de topicos
+nesse formato structure?
+
+
+Problema 1
+0.marca
+
+Solução problema 1
+structure = {'name': 'marca', 'children': []}
+
+Problema 2
+0.marca
+1.ferrari
+2.fusca
+3.gol
+
+Solução problema 2
+
+
+structure = {'name': 'marca' , 'children': [{'name': 'ferrari','children':[]}, {'name': 'fusca','children':[]}, {'name': 'gol','children':[]} ]}
+
+
+problema 3
+
+0.marca
+1. ferrari
+1.1 ferrari vermelha
+2. fusca
+3 gol
+
+Solução problema 3
+
+structure = {'name': 'marca' , 'children': [{'name': 'ferrari','children':[{'name': 'ferrari vermelha','children':[]}]}, {'name': 'fusca','children':[]}, {'name': 'gol','children':[]} ]}
+
+
+
+structure = {'name': 'carros', 'children': []}
+structure['children'].append({'name': None, 'children': []})
+
+problema 4
+
+0.marca
+1.ferrari
+1.1 ferrari vermelha
+2.fusca
+2.1 fusca azul
+2.2 fusca preto
+3.gol
+
+structure = {'name': 'marca' , 'children': [{'name': 'ferrari','children':[{'name': 'ferrari vermelha','children':[]}]}, {'name': 'fusca','children':[{'name': 'fusca preto','children':[]}]}, {'name': 'gol','children':[]} ]}
+
+
+
+0.marca
+1.ferrari
+2.fusca
+2.1 fusca azul
+2.2 fusca preto
+2.2.1 fusca preto alugado
+2.2.2 fusca preto novo
+3.gol
+
+structure = {'name': 'marca' , 'children': [{'name': 'ferrari'}, {'name': 'fusca','children': [{'name': 'fusca azul'}, {'name': 'fusca preto','children': [{'name': 'fusca preto alugado'}, {'name': 'fusca preto novo'}]}]}, {'name': 'gol'}]}
+
+
+'children': [{'name': 'fusca preto alugado'}, {'name': 'fusca preto novo'}]
+
+
+
+
+def add_children(structure, name, new_children):
+    if structure['name'] == name:
+        structure['children'].extend(new_children)
+    else:
+        for child in structure['children']:
+            add_children(child, name, new_children)
+
+name = 'gol'
+new_children = [{'name': 'gol prata'}, {'name': 'gol azul'}, {'name': 'gol vermelho'}]
+
+add_children({'name': 'marca' , 'children': [{'name': 'ferrari'}, {'name': 'fusca'}, {'name': 'gol'}]}, name, new_children)
+
+Como adicionar 1
+structure = {'name': 'carros', 'children': []}
+structure['children'].append({'name': None, 'children': []})
+
+
+{'name': 'carros', 'children': [{'name': None, 'children': [{'name': 'carros', 'children': [{'name': None, 'children': [{'name': 'carros', 'children': [{'name': None, 'children': [{'name': 'carros', 'children': [{'name': None, 'children': [{'name': 'carros', 'children': [{'name': None, 'children': []}]}]}]}]}]}]}]}]}]}
+
+adiciona avlor a um dicionario
+structurefusca preto novo conversivelR0 = {'name': 'carros', 'children': []}
+structure['color'] = 'red'
+print(structure) #{'name': 'carros', 'children': [], 'color': 'red'}
+
+R0 = {'name': 'marca', 'children': []}
+
+R1= {'name': 'ferrari', 'children': []},
+    {name': 'fusca', 'children': []},
+    {name': 'teste', 'children': []}
+
+R2={'name': 'fusca azul', 'children': []},
+        {'name': 'fusca preto', 'children': []}
+
+
+tsteR2={'name': 'teste a', 'children': []}
+
+R3
+
+
+
+
+
+0.0.0. carros
+
+1.0.0. ferrari
+
+2.0.0.0. fusca
+2.1.0.0. fusca azul
+
+2.2.0.0. fusca preto
+2.2.1.0. fusca preto alugado
+
+2.2.2.0. fusca preto novo
+2.2.2.1. fusca preto novo conversivel
+2.2.2.2. fusca preto novo blindado
+2.2.2.3. fusca preto novo usado
+
+3.0.0.0.  teste
+3.1.0.0.  teste a
+
+
+
+
+Como percorer um dicionario recursivamente.
+
+
+def percorrer_dicionario(dicionario):
+    for chave, valor in dicionario.items():
+        if isinstance(valor, dict):
+            print()  
+            percorrer_dicionario(valor)
+        else:
+            print(chave, valor)
+
+structure = {'name': 'marca' , 'children': [{'name': 'ferrari','children':[{'name': 'ferrari vermelha','children':[]}]}, {'name': 'fusca','children':[{'name': 'fusca preto','children':[]}]}, {'name': 'gol','children':[]} ]}
+percorrer_dicionario(structure)
+
+dicionario={}
+

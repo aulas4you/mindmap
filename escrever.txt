@@ -1,0 +1,72 @@
+import json
+
+
+#guarda o nome do arquivo de leitura
+input_file = 'input.txt'
+#função para abrir o txt tem o with para segurança
+with open(input_file, 'r') as f:
+    lines = f.read().strip().splitlines() #divide em linhas
+
+structure = {'name':lines[0].split('.')[-1], 'children': []}
+#acima o noma é sempre a primeira palavra no nivel zero
+
+#procura a profundidade maxima numa list comprehension
+max_parts = max(len(line.split('.')) for line in lines)
+
+max2_parts = max(line.split('.')[0] for line in lines)
+#maximo primeiro nivel
+lines_completa=[]
+
+#loop para completar com zero
+for line in lines:
+    parts = line.split('.') #divide as linhas nos pontos
+    nome = parts.pop()      #tira o ultimo elemento
+    parts = parts + (['0.'] * (max_parts - len(parts)))  #coloca zeros
+    parts.append(nome)   #coloca o nome
+    lines_completa.append(parts)
+
+#loop para montar a structure
+for line in lines_completa:
+    if line=0:
+      continue
+    parts = line.split('.') #divide as linhas nos pontos
+    nome = parts.pop()      #tira o ultimo elemento
+
+indice=1
+for indice<=max2_parts:
+   if int(line[indice].strip(".")[0]*int(line[0].strip(".")[0]==0:
+     structure['children'].append({'name':nome})
+    parts.append(nome)   #coloca o nome
+
+
+
+
+
+structure = build_structure(lines)
+print(json.dumps(structure, indent=4))
+
+
+output_file = 'output.txt'
+with open(output_file, 'w') as f:
+    f.write('structure = ')
+    json.dump(structure, f, indent=4)
+
+
+0.0.0. carros
+1.0.0. ferrari
+2.0.0. fusca
+2.1.0. fusca azul
+2.2.0. fusca preto
+2.2.1. fusca preto alugado
+2.2.2. fusca preto novo
+
+
+
+
+    current_level = structure
+    for i in range(1, max_parts):
+        level = int(parts[i-1])
+        if len(current_level['children']) <= level:
+            current_level['children'].append({'name': None, 'children': []})
+        current_level = current_level['children'][level]
+    current_level['name'] = parts[-1]
